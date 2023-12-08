@@ -3,10 +3,8 @@ import requests
 import pandas as pd
 
 st.set_page_config(
-    page_title="🚕 Taxifare by OS",  # => Quick reference - Streamlit
-    page_icon="🚕",
-    layout="wide",  # wide
-    initial_sidebar_state="collapsed")  # collapsed
+    page_title="🚕 TaxiFare by OS",
+    layout="wide")
 '''
 # 🚕 Welcome to my TaxiFare!
 '''
@@ -44,8 +42,6 @@ def get_map_data():
     })
 
 
-columns[1].map(get_map_data(), zoom=11)
-
 if columns[1].button("➡️ Get my taxi fare"):
     URL = 'https://taxifare.lewagon.ai/predict'
     params = dict(
@@ -61,3 +57,5 @@ if columns[1].button("➡️ Get my taxi fare"):
     st.balloons()
     if fare > 1000:
         columns[1].write("⚠️ C'est beaucoup d'argent")
+
+columns[1].map(get_map_data(), zoom=11)
